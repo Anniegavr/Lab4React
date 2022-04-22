@@ -1,0 +1,13 @@
+export const CHANGE_ID = "CHANGE_ID";
+export const SET_NICKNAME = "SET_NICKNAME";
+export const CHANGE_AMOUNT = "CHANGE_AMOUNT";
+export const CHANGE_SCORE = "CHANGE_SCORE";
+export const CREATE_QUIZ = "CREATE_QUIZ";
+export const PLAY_QUIZ = "PLAY_QUIZ";
+export const DELETE_QUIZ = " DELETE_QUIZ";
+export const INSERT_QUIZ_TITLE = "INSERT_QUIZ_TITLE";
+export const INSERT_QUESTION = "INSERT_QUESTION";
+export const INSERT_ANSWER = "INSERT_ANSWER";
+export const CREATE_USER = "CREATE_USER";
+export const SET_NAME = "SET_NAME";
+export const SET_SURNAME = "SET_SURNAME";
