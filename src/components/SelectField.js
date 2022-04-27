@@ -10,27 +10,38 @@ import {
 } from "../redux/actions";
 
 const SelectField = (props) => {
-  const { label, options } = props;
+  const { label, options, res } = props;
   const dispatch = useDispatch();
-  const [value, setValue] = useState("");
+  // const [value, setValue] = useState();
 
   const handleChange = (e) => {
-    setValue(e.target.value);
-    dispatch(handleQuizIdChange(e.target.value));
+    console.log("e: ",e.target.value);
+    console.log("selected res <3 : ", res)
+    res.map(quiz => {
+      if (quiz.title == e.target.value){
+        dispatch(handleQuizIdChange(quiz.id));
+      }
+    })
+    
+    // setValue(e.target.value);
+
+    
 
   };
 
   return (
     <Box mt={3} width="100%" >
       <FormControl size="small" fullWidth>
-        <InputLabel>{label}</InputLabel>
-        <Select value={value} label={label} onChange={handleChange}>
+        {/* <InputLabel>{label}</InputLabel> */}
+        <select  onChange={handleChange}> 
+        
           {options.map(({ id, name }) => (
-            <MenuItem value={id} key={id}>
-              {name}
-            </MenuItem>
+            <option key={id}>{name}</option>
+            // <MenuItem value={id} key={id}>
+              // {name}
+            // </MenuItem>
           ))}
-        </Select>
+        </select>
       </FormControl>
     </Box>
   );

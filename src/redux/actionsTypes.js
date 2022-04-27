@@ -8,6 +8,6 @@ export const DELETE_QUIZ = " DELETE_QUIZ";
 export const INSERT_QUIZ_TITLE = "INSERT_QUIZ_TITLE";
 export const INSERT_QUESTION = "INSERT_QUESTION";
 export const INSERT_ANSWER = "INSERT_ANSWER";
-export const CREATE_USER = "CREATE_USER";
+export const CREATE_USER_ID = "CREATE_USER_ID";
 export const SET_NAME = "SET_NAME";
 export const SET_SURNAME = "SET_SURNAME";

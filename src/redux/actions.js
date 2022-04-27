@@ -6,9 +6,9 @@ import {
   DELETE_QUIZ,
   SET_NICKNAME,
   CHANGE_ID,
-  CREATE_USER,
 SET_NAME,
-SET_SURNAME
+SET_SURNAME,
+CREATE_USER_ID
 } from "./actionsTypes";
 
 export const handleCreateQuizChange = (payload) => ({
@@ -54,7 +54,7 @@ export const handleInsertText = (payload) => ({
 });
 
 export const handleCreateUser = (payload) => ({
-  type: CREATE_USER,
+  type: CREATE_USER_ID,
   payload,
 });
 

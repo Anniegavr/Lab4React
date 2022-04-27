@@ -3,7 +3,7 @@ import {
   CHANGE_SCORE,
   SET_NICKNAME,
   CHANGE_ID,
-  CREATE_USER,
+  CREATE_USER_ID,
   SET_NAME,
   SET_SURNAME,
 } from "./actionsTypes";
@@ -21,12 +21,10 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_USER:
+    case CREATE_USER_ID:
       return {
         ...state,
-        user_id: action.payload,
-        user_name: action.payload,
-        user_surname: action.payload
+        user_id: action.payload
       };
     case SET_NAME:
       return{

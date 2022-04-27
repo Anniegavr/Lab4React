@@ -19,10 +19,10 @@ const Questions = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  let apiUrl = `/quizzes/${quiz_id}`;
+  let apiUrl = `/quizzes/${quiz_id}/`;
 
   const { response, loading } = useAxios({ url: apiUrl });
-  const [question_id, setQuestionIndex] = useState(0);
+  const [question_index, setQuestionIndex] = useState(0);
   const [options, setOptions] = useState([]);
   // const [score, setScore] = useState();
 
@@ -30,10 +30,10 @@ const Questions = () => {
   useEffect(() => {
 
     if (response?.questions.length) {
-      const question = response.questions[question_id];
+      const question = response.questions[question_index];
       setOptions(question.answers);
     }
-  }, [response, question_id]);
+  }, [response, question_index]);
 
   if (loading) {
     return (
@@ -44,26 +44,34 @@ const Questions = () => {
   }
 
   const handleClickAnswer = (e) => {
-    const question = response.questions[question_id];
-    const answer = {
+    const question = response.questions[question_index];
+    const res = axios.post("https://pure-caverns-82881.herokuapp.com/api/v54/quizzes/"+quiz_id+"/submit",  
+    {
       "data": {
-          "question_id": question_id,
-          "answer": e.target.textContent,
-          "user_id": user_id,
-      }
-  }
-    const headers = { "X-Access-Token": "1c91088390288297fbfac94a2bb1dab27b37555731af66037b54f736cef94908" };
-    
-    // const submitAns = axios.post(apiUrl.concat(`/submit`), answer, { headers })
-  //
-    this.setState({ answer: response.data.id });
-    console.log("text content: ",e.target.textContent)
-    if (e.target.textContent === response.questions[question_id].answer) {
-      dispatch(handleScoreChange(score+1));
+        "question_id": response.questions[question_index].id,
+        "answer": e.target.textContent,
+        "user_id": user_id
     }
+    }, 
+    { headers: { 
+        "X-Access-Token": "f98295ea42621f86f4606a5f09ab23083b28a3308fd26da5cef273543a1073d4"},
+    }).then((res) => { 
+      if (res.data.correct == true){
+        console.log("correct: ",res.data.correct);
+        dispatch(handleScoreChange(score+1));
+      }
+      console.log("res: ", res)
+    
+    })
 
-    if (question_id + 1 < response.questions.length) {
-      setQuestionIndex(question_id + 1);
+  
+    // this.setState({ answer: response.data.id });
+    // if (e.target.textContent === response.questions[question_id].answer) {
+      
+    // }
+
+    if (question_index + 1 < response.questions.length) {
+      setQuestionIndex(question_index + 1);
     } else {
       history.push("/score");
     }
@@ -71,10 +79,10 @@ const Questions = () => {
 
   return (
     <Box>
-      <Typography variant="h4">Question {question_id + 1}</Typography>
+      <Typography variant="h4">Question {question_index + 1}</Typography>
       <Typography variant="h5">Player: {nickname}</Typography>
       <Typography mt={5}>
-        {decode(response.questions[question_id].question)}
+        {decode(response.questions[question_index].question)}
       </Typography>
       {options.map((data, id) => (
         <Box mt={2} key={id}>
