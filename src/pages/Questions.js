@@ -57,18 +57,10 @@ const Questions = () => {
         "X-Access-Token": "f98295ea42621f86f4606a5f09ab23083b28a3308fd26da5cef273543a1073d4"},
     }).then((res) => { 
       if (res.data.correct == true){
-        console.log("correct: ",res.data.correct);
         dispatch(handleScoreChange(score+1));
       }
-      console.log("res: ", res)
     
     })
-
-  
-    // this.setState({ answer: response.data.id });
-    // if (e.target.textContent === response.questions[question_id].answer) {
-      
-    // }
 
     if (question_index + 1 < response.questions.length) {
       setQuestionIndex(question_index + 1);

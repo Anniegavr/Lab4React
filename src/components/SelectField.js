@@ -15,8 +15,6 @@ const SelectField = (props) => {
   // const [value, setValue] = useState();
 
   const handleChange = (e) => {
-    console.log("e: ",e.target.value);
-    console.log("selected res <3 : ", res)
     res.map(quiz => {
       if (quiz.title == e.target.value){
         dispatch(handleQuizIdChange(quiz.id));

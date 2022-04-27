@@ -12,7 +12,6 @@ import { handleQuizIdChange } from "../redux/actions";
 const Settings = () => {
   const { response, error, loading } = useAxios({ url: "/quizzes" });
   const history = useHistory();
-  console.log(response?.map(data => {console.log(data); return {"id":data.id, "name":data.title}}));
   const {
     user_name,
     user_surname,
@@ -23,7 +22,6 @@ const Settings = () => {
   useEffect(() => {
     
     if(response != null){
-      console.log("quiz id response: ",response[0].id)
       dispatch(handleQuizIdChange(response[0].id)) 
     }
   },[response]
@@ -61,7 +59,7 @@ const Settings = () => {
         {user_surname}
 
       </Typography>
-      <SelectField res={response} options={response?.map(data => {console.log(data); return {"id":data.id, "name":data.title}})} label="Options" />
+      <SelectField res={response} options={response?.map(data => { return {"id":data.id, "name":data.title}})} label="Options" />
       <Typography variant="h6" mt={20} color='#0096c7'>
         Set a nickname:
       </Typography>

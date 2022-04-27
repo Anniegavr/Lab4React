@@ -13,7 +13,7 @@ const useAxios = ({ url}) => {
   useEffect(() => {  //"ed19da4be8913e9ef7ca2165efc7db0f6faca54804cd00071b53cf0f9a46f026"
     const fetchData = () => {
       axios.get(url, { headers: accessToken})
-        .then((res) => {console.log("res: ",res);setResponse(res.data)})
+        .then((res) => {setResponse(res.data)})
         .catch((err) => setError(err))
         .finally(() => setLoading(false));
 

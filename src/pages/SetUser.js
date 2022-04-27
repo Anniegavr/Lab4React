@@ -33,7 +33,6 @@ const SetUser = () => {
     { headers: { 
         "X-Access-Token": "f98295ea42621f86f4606a5f09ab23083b28a3308fd26da5cef273543a1073d4"},
     }).then((res) => { 
-      console.log("res: ", res)
       dispatch(handleCreateUser(res.data.id));
     })
     .catch((err) => setError(err))
@@ -44,12 +43,10 @@ const SetUser = () => {
   };
 
   const handleNameChange = (e) => {
-    console.log("name: ", e.target.value)
     dispatch(handleSetName(e.target.value))
   };
 
   const handleSurnameChange = (e) => {
-    console.log("surname: ", e.target.value)
     dispatch(handleSetSurname(e.target.value))
   };
 
