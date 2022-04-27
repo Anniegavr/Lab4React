@@ -43,6 +43,7 @@ const Settings = () => {
       <Typography variant="h6" mt={20} color='#0096c7'>
         Set a nickname:
       </Typography>
+      
       <InsertTextComp />
       <Box mt={3} width="100%">
         <Button fullWidth variant="contained" type="submit">

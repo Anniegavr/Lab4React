@@ -31,8 +31,7 @@ const reducer = (state = initialState, action) => {
     case SET_NAME:
       return{
         ...state,
-      user_name: action.payload,
-      user_surname: action.payload
+      user_name: action.payload
       }
       case SET_SURNAME:
       return{

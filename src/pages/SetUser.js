@@ -1,4 +1,4 @@
-import { Button, CircularProgress, Typography } from "@mui/material";
+import { Button, CircularProgress, Typography, TextField, FormControl } from "@mui/material";
 import { Box } from "@mui/system";
 import { useHistory } from "react-router-dom";
 import InsertTextComp from "../components/InsertTextComp";
@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { handleSetName, handleSetSurname } from "../redux/actions";
 
 const SetUser = () => {
 //   const [response, setResponse] = useState(null);
@@ -54,17 +55,41 @@ const SetUser = () => {
     history.push("/config");
   };
 
+  const handleNameChange = (e) => {
+    console.log("name: ", e.target.value)
+    dispatch(handleSetName(e.target.value))
+  };
+
+  const handleSurnameChange = (e) => {
+    console.log("surname: ", e.target.value)
+    dispatch(handleSetSurname(e.target.value))
+  };
+
   
   return (
     <form onSubmit={handleSubmit}>
       <Typography variant="h6" mt={20} color='#0096c7'>
         Insert name:
       </Typography>
-      <InsertTextComp />
+      <TextField
+          fullWidth
+          onChange={handleNameChange}
+          variant="outlined"
+          label="Insert Text"
+          type="text"
+        />
+      {/* <input></input> */}
+      {/* <InsertTextComp /> */}
       <Typography variant="h6" mt={20} color='#0096c7'>
         Insert surname:
       </Typography>
-      <InsertTextComp />
+      <TextField
+          fullWidth
+          onChange={handleSurnameChange}
+          variant="outlined"
+          label="Insert Text"
+          type="text"
+        />
       <Box mt={3} width="100%">
         <Button fullWidth variant="contained" type="submit">
           Next
