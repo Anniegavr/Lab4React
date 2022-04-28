@@ -6,6 +6,7 @@ import {
   CREATE_USER_ID,
   SET_NAME,
   SET_SURNAME,
+  INSERT_QUIZ_TITLE
 } from "./actionsTypes";
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   quiz_id: 0,
   question_answers_no: 0,
   amount_of_question: 50,
+  quiz_title: "",
   score: 0,
 };
 
@@ -45,6 +47,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         quiz_id: action.payload,
+      };
+    case INSERT_QUIZ_TITLE:
+      return{
+        ...state,
+        quiz_title: action.payload,
       };
     // case DELETE_QUIZ:  //CHANGE_TYPE
     //   return {

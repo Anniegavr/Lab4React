@@ -1,5 +1,6 @@
 import {
   CREATE_QUIZ,
+  INSERT_QUIZ_TITLE,
   PLAY_QUIZ,
   CHANGE_AMOUNT,
   CHANGE_SCORE,
@@ -13,6 +14,10 @@ CREATE_USER_ID
 
 export const handleCreateQuizChange = (payload) => ({
   type: CREATE_QUIZ,
+  payload,
+});
+export const handleTitleChange = (payload) => ({
+  type: INSERT_QUIZ_TITLE,
   payload,
 });
 export const handleQuizIdChange = (payload) => ({
